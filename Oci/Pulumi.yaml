@@ -1,0 +1,3 @@
+name: Oci
+description: Oci Infra
+runtime: dotnet
