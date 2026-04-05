@@ -1,0 +1,12 @@
+config:
+  Oci:compartmentOcid: ocid1.compartment.oc1..aaaaaaaal42kzwcwehivq3meluwxn74su57nu6dqppcg74r3wtzn7oqc3yca
+  Oci:vcnCidrBlock: 10.3.0.0/16
+  Oci:subnetCidrBlock: 10.3.1.0/24
+  Oci:ubuntu24ImageOcid: ocid1.image.oc1.ap-singapore-1.aaaaaaaa3rjnbq273x5kzisyx6os5r57735jnhytwkmwx7c5gm4ybkvzi2ua
+  oci:tenancyOcid:
+    secure: AAABAA6U6SmAqjRwPpS8lBlt4RtE3/gXqCl8BL9Sbn11/O283wgqXXRWXixqtxyNxEBRvXnPtgkTGMZ9tPNbQLYjRFGZfFyAjxaonjLxKFZy85W/aC/LhyW+AemMwmZr3c3W1QtseHX5Lv8c1T6y
+  oci:userOcid:
+    secure: AAABAItTN0VVN9KCWjy8Li1P7dt6ZHHvs6ASW4XPZD+dPjW7HJasuq3sy9OM5H8ZaWyAwuwSeY+Ock0UXUpqiGog+w85pm/TJ1867lkVIXAl8L7quwAVldERgeWSAZgfH8y8amm4jg7n+pK9
+  oci:fingerprint:
+    secure: AAABACWfYwQ3jMU7sy2TKL48AorJkf84T2fG0/fwUXMrUB1IaHS8ZPf5FBp5/6XvQKvvubyE5fnFvF/Svz/hwJtN/csfuUu6g7ljznzPbA==
+  oci:region: ap-singapore-1
