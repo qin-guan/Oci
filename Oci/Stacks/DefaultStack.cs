@@ -39,14 +39,14 @@ public class DefaultStack : Stack
             new InstanceArgs
             {
                 CompartmentId = compartmentOcid,
-                AvailabilityDomain = "YAbW:AP-SINGAPORE-1-AD-1",
+                AvailabilityDomain = "YAbW:AP-SINGAPORE-1-AD-3",
                 DisplayName = "temasek3-prod",
                 Shape = "VM.Standard.A1.Flex",
 
                 ShapeConfig = new Pulumi.Oci.Core.Inputs.InstanceShapeConfigArgs
                 {
                     Ocpus = 1,
-                    MemoryInGbs = 4,
+                    MemoryInGbs = 2,
                 },
 
                 CreateVnicDetails = new Pulumi.Oci.Core.Inputs.InstanceCreateVnicDetailsArgs
