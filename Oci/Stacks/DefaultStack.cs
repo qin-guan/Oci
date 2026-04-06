@@ -58,7 +58,7 @@ public class DefaultStack : Stack
                 {
                     SourceType = "image",
                     SourceId = ubuntu24ImageOcid,
-                    BootVolumeSizeInGbs = "32",
+                    BootVolumeSizeInGbs = "50",
                 },
 
                 FreeformTags = { { "managed-by", "pulumi" } },
