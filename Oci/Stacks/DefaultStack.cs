@@ -39,7 +39,7 @@ public class DefaultStack : Stack
             new InstanceArgs
             {
                 CompartmentId = compartmentOcid,
-                AvailabilityDomain = "YAbW:AP-SINGAPORE-1-AD-3",
+                AvailabilityDomain = "YAbW:AP-SINGAPORE-1-AD-1",
                 DisplayName = "temasek3-prod",
                 Shape = "VM.Standard.A1.Flex",
 
