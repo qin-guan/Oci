@@ -63,8 +63,25 @@ public class DefaultStack : Stack
                 {
                     new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleArgs
                     {
-                        Protocol = "all",
+                        Protocol = "6",
                         Destination = "0.0.0.0/0",
+                        TcpOptions =
+                            new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleTcpOptionsArgs
+                            {
+                                Min = 443,
+                                Max = 443,
+                            },
+                    },
+                    new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleArgs
+                    {
+                        Protocol = "6",
+                        Destination = "0.0.0.0/0",
+                        TcpOptions =
+                            new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleTcpOptionsArgs
+                            {
+                                Min = 80,
+                                Max = 80,
+                            },
                     },
                 },
                 IngressSecurityRules =
@@ -73,11 +90,12 @@ public class DefaultStack : Stack
                     {
                         Protocol = "6",
                         Source = "0.0.0.0/0",
-                    },
-                    new Pulumi.Oci.Core.Inputs.SecurityListIngressSecurityRuleArgs
-                    {
-                        Protocol = "1",
-                        Source = "0.0.0.0/0",
+                        TcpOptions =
+                            new Pulumi.Oci.Core.Inputs.SecurityListIngressSecurityRuleTcpOptionsArgs
+                            {
+                                Min = 22,
+                                Max = 22,
+                            },
                     },
                 },
             }
