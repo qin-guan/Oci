@@ -61,6 +61,14 @@ public class DefaultStack : Stack
                     BootVolumeSizeInGbs = "50",
                 },
 
+                Metadata = new InputMap<string>
+                {
+                    {
+                        "ssh_authorized_keys",
+                        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICntO5DCRkXCmf5XYICVJMm1hYX/0OrVG++ZZPrJGHCQ qinguan@qins-legion"
+                    },
+                },
+
                 FreeformTags = { { "managed-by", "pulumi" } },
             }
         );
