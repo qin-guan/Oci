@@ -23,6 +23,66 @@ public class DefaultStack : Stack
             }
         );
 
+        var internetGateway = new InternetGateway(
+            "temasek3-prod-igw",
+            new InternetGatewayArgs
+            {
+                CompartmentId = compartmentOcid,
+                VcnId = vcn.Id,
+                DisplayName = "temasek3-prod-igw",
+            }
+        );
+
+        var routeTable = new RouteTable(
+            "temasek3-prod-rt",
+            new RouteTableArgs
+            {
+                CompartmentId = compartmentOcid,
+                VcnId = vcn.Id,
+                DisplayName = "temasek3-prod-rt",
+                RouteRules =
+                {
+                    new Pulumi.Oci.Core.Inputs.RouteTableRouteRuleArgs
+                    {
+                        Destination = "0.0.0.0/0",
+                        DestinationType = "CIDR_BLOCK",
+                        NetworkEntityId = internetGateway.Id,
+                    },
+                },
+            }
+        );
+
+        var securityList = new SecurityList(
+            "temasek3-prod-sl",
+            new SecurityListArgs
+            {
+                CompartmentId = compartmentOcid,
+                VcnId = vcn.Id,
+                DisplayName = "temasek3-prod-sl",
+                EgressSecurityRules =
+                {
+                    new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleArgs
+                    {
+                        Protocol = "all",
+                        Destination = "0.0.0.0/0",
+                    },
+                },
+                IngressSecurityRules =
+                {
+                    new Pulumi.Oci.Core.Inputs.SecurityListIngressSecurityRuleArgs
+                    {
+                        Protocol = "6",
+                        Source = "0.0.0.0/0",
+                    },
+                    new Pulumi.Oci.Core.Inputs.SecurityListIngressSecurityRuleArgs
+                    {
+                        Protocol = "1",
+                        Source = "0.0.0.0/0",
+                    },
+                },
+            }
+        );
+
         var subnet = new Subnet(
             "temasek3-prod-subnet",
             new SubnetArgs
@@ -31,6 +91,8 @@ public class DefaultStack : Stack
                 VcnId = vcn.Id,
                 CidrBlock = subnetCidrBlock,
                 DisplayName = "temasek3-prod-subnet",
+                RouteTableId = routeTable.Id,
+                SecurityListIds = { securityList.Id },
             }
         );
 
@@ -52,6 +114,7 @@ public class DefaultStack : Stack
                 CreateVnicDetails = new Pulumi.Oci.Core.Inputs.InstanceCreateVnicDetailsArgs
                 {
                     SubnetId = subnet.Id,
+                    AssignPublicIp = "true",
                 },
 
                 SourceDetails = new Pulumi.Oci.Core.Inputs.InstanceSourceDetailsArgs
