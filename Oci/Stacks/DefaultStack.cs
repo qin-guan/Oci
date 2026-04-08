@@ -59,31 +59,6 @@ public class DefaultStack : Stack
                 CompartmentId = compartmentOcid,
                 VcnId = vcn.Id,
                 DisplayName = "temasek3-prod-sl",
-                EgressSecurityRules =
-                {
-                    new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleArgs
-                    {
-                        Protocol = "6",
-                        Destination = "0.0.0.0/0",
-                        TcpOptions =
-                            new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleTcpOptionsArgs
-                            {
-                                Min = 443,
-                                Max = 443,
-                            },
-                    },
-                    new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleArgs
-                    {
-                        Protocol = "6",
-                        Destination = "0.0.0.0/0",
-                        TcpOptions =
-                            new Pulumi.Oci.Core.Inputs.SecurityListEgressSecurityRuleTcpOptionsArgs
-                            {
-                                Min = 80,
-                                Max = 80,
-                            },
-                    },
-                },
                 IngressSecurityRules =
                 {
                     new Pulumi.Oci.Core.Inputs.SecurityListIngressSecurityRuleArgs
