@@ -130,5 +130,45 @@ public class DefaultStack : Stack
                 FreeformTags = { { "managed-by", "pulumi" } },
             }
         );
+        
+        var cddcInstance = new Instance(
+            "cddc-prod",
+            new InstanceArgs
+            {
+                CompartmentId = compartmentOcid,
+                AvailabilityDomain = "YAbW:AP-SINGAPORE-1-AD-1",
+                DisplayName = "cddc",
+                Shape = "VM.Standard.A1.Flex",
+
+                ShapeConfig = new Pulumi.Oci.Core.Inputs.InstanceShapeConfigArgs
+                {
+                    Ocpus = 3,
+                    MemoryInGbs = 22,
+                },
+
+                CreateVnicDetails = new Pulumi.Oci.Core.Inputs.InstanceCreateVnicDetailsArgs
+                {
+                    SubnetId = subnet.Id,
+                    AssignPublicIp = "true",
+                },
+
+                SourceDetails = new Pulumi.Oci.Core.Inputs.InstanceSourceDetailsArgs
+                {
+                    SourceType = "image",
+                    SourceId = ubuntu24ImageOcid,
+                    BootVolumeSizeInGbs = "50",
+                },
+
+                Metadata = new InputMap<string>
+                {
+                    {
+                        "ssh_authorized_keys",
+                        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICntO5DCRkXCmf5XYICVJMm1hYX/0OrVG++ZZPrJGHCQ qinguan@qins-legion"
+                    },
+                },
+
+                FreeformTags = { { "managed-by", "pulumi" } },
+            }
+        );
     }
 }
